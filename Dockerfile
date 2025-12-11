@@ -1,17 +1,21 @@
-# Use an official OpenJDK image
-FROM eclipse-temurin:17-jdk
+# Stage 1: Build with Maven
+FROM eclipse-temurin:17-jdk AS build
 
-# Install Maven
-RUN apt-get update && apt-get install -y maven
-
-# Set working directory
 WORKDIR /app
 
-# Copy your Maven project files
+# Copy Maven project files
 COPY . .
 
-# Build the project with Maven
-RUN mvn clean install
+# Build the project
+RUN apt-get update && apt-get install -y maven && mvn clean package -DskipTests
 
-# Run the JAR file
-CMD ["java", "-jar", "target/SystemInfoFirebase-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+# Stage 2: Run the Spring Boot JAR
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+# Copy the built JAR from the build stage
+COPY --from=build /app/target/SystemInfoFirebase-1.0-SNAPSHOT.jar app.jar
+
+# Run the Spring Boot JAR
+CMD ["java", "-jar", "app.jar"]
