@@ -18,11 +18,11 @@ public class SystemInfoFirebase {
 //        		);
 			FileInputStream serviceAccount = new FileInputStream(System.getenv("GOOGLE_APPLICATION_CREDENTIALS"));
 
-			FirebaseOptions options = new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-					.setDatabaseUrl("https://systeminfo-ed6ac-default-rtdb.firebaseio.com/").build();
-
-			FirebaseApp.initializeApp(options);
+//			FirebaseOptions options = new FirebaseOptions.Builder()
+//					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+//					.setDatabaseUrl("https://systeminfo-ed6ac-default-rtdb.firebaseio.com/").build();
+//
+//			FirebaseApp.initializeApp(options);
 
 			// Collect system info
 			String systemName = InetAddress.getLocalHost().getHostName();
