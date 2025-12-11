@@ -1,2 +1,21 @@
+# Maven build output
 target/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA project files (if you ever open in IntelliJ)
+*.iml
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Sensitive configs
 *.json
