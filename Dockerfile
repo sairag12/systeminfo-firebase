@@ -14,4 +14,4 @@ COPY . .
 RUN mvn clean install
 
 # Run the JAR file
-CMD ["java", "-jar", "target/SystemInfoFirebase-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/SystemInfoFirebase-1.0-SNAPSHOT-jar-with-dependencies.jar"]
